@@ -1,0 +1,561 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f7f3e9">
+
+<title>Mera Gaon</title>
+<meta name="description" content="Discover Bhamori Khurd — a village of memories, traditions and home.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cream:#f7f3e9;
+  --paper:#fffdf7;
+  --green:#234b37;
+  --deep:#173526;
+  --gold:#b69256;
+  --muted:#797b70;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  min-height:100%;
+  background:var(--cream);
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  min-height:100svh;
+  padding:
+    max(18px,env(safe-area-inset-top))
+    19px
+    max(22px,env(safe-area-inset-bottom));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(ellipse at 0% 0%,rgba(182,146,86,.13),transparent 45%),
+    radial-gradient(ellipse at 100% 100%,rgba(35,75,55,.07),transparent 40%),
+    var(--cream);
+  color:var(--deep);
+  font-family:"DM Sans",sans-serif;
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.welcome{
+  width:100%;
+  max-width:390px;
+  margin:auto;
+  animation:pageEnter .85s ease both;
+}
+
+/* TOP WELCOME LABEL */
+
+.topline{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  margin-bottom:19px;
+  color:var(--green);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:2.1px;
+  text-transform:uppercase;
+}
+
+.dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#81966b;
+  box-shadow:0 0 0 4px #81966b20;
+  animation:dotPulse 2s infinite;
+}
+
+/* MAIN VILLAGE IMAGE */
+
+.photo-wrap{
+  position:relative;
+  height:clamp(195px,32svh,285px);
+  overflow:hidden;
+  isolation:isolate;
+  border-radius:170px 170px 5px 5px;
+  background:#e3dfd0;
+  box-shadow:0 16px 42px #234b3712;
+}
+
+.photo-wrap img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  animation:photoEnter 1.1s ease both;
+  transition:transform .8s ease;
+}
+
+.photo-wrap:hover img{
+  transform:scale(1.035);
+}
+
+.photo-wrap::after{
+  content:"";
+  position:absolute;
+  inset:35% 0 0;
+  background:linear-gradient(transparent,#132a1dcc);
+  pointer-events:none;
+}
+
+.photo-label{
+  position:absolute;
+  z-index:1;
+  bottom:17px;
+  left:18px;
+  right:15px;
+  color:white;
+  font-size:9px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+/* PERSONAL CREATOR PROFILE */
+
+.creator{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:11px;
+  margin:0 auto 20px;
+  animation:profileEnter .9s .15s both;
+}
+
+.creator-photo{
+  position:relative;
+  width:49px;
+  height:49px;
+  padding:3px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  background:var(--paper);
+  box-shadow:0 4px 15px #234b3715;
+  flex-shrink:0;
+}
+
+.creator-photo::after{
+  content:"";
+  position:absolute;
+  inset:-4px;
+  border:1px solid #b6925640;
+  border-radius:50%;
+  animation:ringPulse 3s ease-in-out infinite;
+  pointer-events:none;
+}
+
+.creator-photo img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  background:#e6e0d1;
+}
+
+.creator-info{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:3px;
+}
+
+.creator-info span{
+  color:var(--gold);
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:1.2px;
+}
+
+.creator-info strong{
+  color:var(--green);
+  font-family:"Playfair Display",serif;
+  font-size:16px;
+  font-weight:600;
+}
+
+.creator-info small{
+  color:var(--muted);
+  font-size:10px;
+}
+
+/* WELCOME MESSAGE */
+
+.content{
+  padding:23px 3px 0;
+  text-align:center;
+}
+
+.eyebrow{
+  color:var(--gold);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:2.2px;
+  line-height:1.8;
+  text-transform:uppercase;
+}
+
+h1{
+  margin-top:10px;
+  color:var(--deep);
+  font-family:"Playfair Display",serif;
+  font-size:clamp(34px,9vw,43px);
+  font-weight:600;
+  line-height:1.12;
+  letter-spacing:-1px;
+}
+
+h1 span{
+  display:block;
+  margin-top:3px;
+  color:var(--gold);
+  font-weight:500;
+  font-style:italic;
+}
+
+.description{
+  max-width:310px;
+  margin:13px auto 0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.85;
+}
+
+.location{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:7px;
+  margin-top:13px;
+  color:var(--green);
+  font-size:10px;
+}
+
+.location svg{
+  width:13px;
+  height:13px;
+  flex-shrink:0;
+}
+
+.divider{
+  width:40px;
+  height:1px;
+  margin:19px auto;
+  background:var(--gold);
+  opacity:.8;
+}
+
+/* MAIN WEBSITE BUTTON */
+
+.explore{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  width:100%;
+  min-height:53px;
+  padding:14px 17px;
+  overflow:hidden;
+  border:1px solid var(--green);
+  border-radius:3px;
+  background:var(--green);
+  color:white;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.15px;
+  box-shadow:0 9px 22px #234b371c;
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
+}
+
+.explore::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:55%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,#ffffff18,transparent);
+  transform:skewX(-20deg);
+  transition:left .65s ease;
+}
+
+.explore:hover::before{
+  left:150%;
+}
+
+.explore:hover{
+  background:var(--deep);
+  transform:translateY(-2px);
+  box-shadow:0 12px 26px #234b3726;
+}
+
+.arrow{
+  font-size:18px;
+  line-height:1;
+  transition:transform .25s ease;
+}
+
+.explore:hover .arrow{
+  transform:translate(3px,-2px);
+}
+
+/* FOOTER */
+
+.footer{
+  margin-top:17px;
+  color:#8b897e;
+  font-size:9px;
+  line-height:1.9;
+  text-align:center;
+}
+
+.footer strong{
+  color:var(--green);
+  font-weight:600;
+}
+
+.heart{
+  display:inline-block;
+  color:#b46b54;
+  animation:heartBeat 2s ease-in-out infinite;
+}
+
+/* ANIMATIONS */
+
+@keyframes pageEnter{
+  from{opacity:0;transform:translateY(13px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes photoEnter{
+  from{opacity:.65;transform:scale(1.045)}
+  to{opacity:1;transform:scale(1)}
+}
+
+@keyframes profileEnter{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes dotPulse{
+  0%,100%{box-shadow:0 0 0 4px #81966b20}
+  50%{box-shadow:0 0 0 7px #81966b0d}
+}
+
+@keyframes ringPulse{
+  0%,100%{transform:scale(1);opacity:.8}
+  50%{transform:scale(1.06);opacity:.35}
+}
+
+@keyframes heartBeat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.15)}
+}
+
+/* SHORT MOBILE SCREENS */
+
+@media(max-height:690px){
+  .topline{margin-bottom:12px}
+  .photo-wrap{height:clamp(145px,27svh,205px)}
+  .creator{margin-bottom:13px}
+  .creator-photo{width:43px;height:43px}
+  .content{padding-top:17px}
+  h1{font-size:34px;margin-top:7px}
+  .description{margin-top:9px;font-size:11px}
+  .location{margin-top:9px}
+  .divider{margin:13px auto}
+  .explore{min-height:48px}
+  .footer{margin-top:11px}
+}
+
+@media(max-width:350px){
+  body{padding-left:14px;padding-right:14px}
+  .photo-wrap{height:190px}
+  h1{font-size:33px}
+  .description{font-size:11px}
+}
+
+/* ACCESSIBILITY */
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="welcome">
+
+  <div class="topline">
+    <span class="dot"></span>
+    Welcome to our village
+  </div>
+
+  <!-- VILLAGE COVER PHOTO -->
+  <div class="photo-wrap">
+    <img
+      src="imgs/maingate.png"
+      alt="A glimpse of Bhamori Khurd village"
+      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85';"
+    >
+
+    <div class="photo-label">
+      Our home · Our heritage
+    </div>
+  </div>
+
+  <section class="content">
+
+    <!-- YOUR CIRCULAR PROFILE PHOTO -->
+    <div class="creator">
+      <div class="creator-photo">
+ <img
+  src="imgs/me.png"
+  alt="Aman Kumar"
+  title="Visit my LinkedIn profile"
+  style="cursor:pointer;"
+  onclick="window.open('https://www.linkedin.com/in/aman-kumar-462a21316/','_blank','noopener,noreferrer')"
+  onerror="this.onerror=null;this.src='https://placehold.co/120x120/f7f3e9/234b37?text=AK';"
+>
+      </div>
+
+      <div class="creator-info">
+        <span>CREATED WITH ♥ BY</span>
+        <strong>Aman Kumar</strong>
+        <small>Developer · Digital Creator</small>
+      </div>
+    </div>
+
+    <div class="eyebrow">
+      A Village · A Story · A Home
+    </div>
+
+    <h1>
+      Welcome to
+      <span>Mera Gaon</span>
+    </h1>
+
+    <p class="description">
+      A place of beautiful memories, timeless traditions
+      and the warmth of home. Come, discover the story
+      of our village.
+    </p>
+
+    <div class="location">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
+        <circle cx="12" cy="10" r="2.5"/>
+      </svg>
+
+      Aligarh, Uttar Pradesh, India
+    </div>
+
+    <div class="divider"></div>
+
+  
+    <a
+      class="explore"
+      href="https://student-amankumar.github.io/Mera-Gaon/"
+      id="exploreButton"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Explore Our Digital Village
+      <span class="arrow">↗</span>
+    </a>
+
+    <div class="footer">
+      Made with <span class="heart">♥</span> for our village<br>
+      <strong>Bhamori Khurd Digital Village</strong>
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+"use strict";
+
+/* ==========================================
+   ORIGINAL WEBSITE LINK
+   Replace the placeholder with your real URL.
+========================================== */
+
+const MAIN_PROJECT_URL = "https://YOUR-ORIGINAL-WEBSITE-URL";
+
+const exploreButton = document.getElementById("exploreButton");
+
+if (exploreButton) {
+  exploreButton.href = MAIN_PROJECT_URL;
+
+  exploreButton.addEventListener("click", function(event) {
+    if (
+      !MAIN_PROJECT_URL ||
+      MAIN_PROJECT_URL.includes("YOUR-ORIGINAL-WEBSITE-URL")
+    ) {
+      event.preventDefault();
+
+      alert(
+        "Please add your original Digital Village website URL in MAIN_PROJECT_URL."
+      );
+    }
+  });
+}
+
+/* ==========================================
+   OPTIONAL IMAGE FALLBACK
+   The HTML image tags already contain fallbacks.
+========================================== */
+
+document.querySelectorAll("img").forEach(function(image) {
+  image.addEventListener("load", function() {
+    image.classList.add("image-loaded");
+  });
+});
+</script>
+
+</body>
+</html>
